@@ -1,4 +1,4 @@
-# BingoHall - Vue.js Version
+# Baseball Bingo
 
 ## Installation
 
