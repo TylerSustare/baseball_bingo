@@ -4,7 +4,7 @@
 # remember to add this file to your .gitignore.
 import Config
 
-database_url = "ecto://postgres:w2dP2Z6X6ugXxtW27EA9@db.scstfwhpgibbkhyevzie.supabase.co"
+database_url = "ecto://postgres:w2dP2Z6X6ugXxtW27EA9@db.scstfwhpgibbkhyevzie.supabase.co/postgres"
 
 # System.get_env("DATABASE_URL") ||
 #   raise """
