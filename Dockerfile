@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1.2
+
 FROM bitwalker/alpine-elixir-phoenix:latest
 
 # Set exposed ports
@@ -5,8 +7,12 @@ ENV PORT=4000
 
 # Phx ENVs
 ENV MIX_ENV=prod
-ENV SECRET_KEY_BASE=s2r+3lWWZ2ATaTGhHJD5Adh43Ocf0I4kz1ET5ytnSi6uj70K1LkOonpTpIYyM7BU
 
+# secrets
+RUN --mount=type=secret,id=_secret,dst=/etc/secrets/.secret cp /etc/secrets/.secret .secret
+ADD .secret ./
+RUN --mount=type=secret,id=_db_url,dst=/etc/secrets/.db_url cp /etc/secrets/.db_url .db_url
+ADD .db_url ./
 
 # Cache elixir deps
 ADD mix.exs mix.lock ./
@@ -20,8 +26,11 @@ ADD . .
 
 # Run frontend build, compile, and digest assets
 RUN npm run deploy --prefix ./assets
-RUN mix do compile, phx.digest
+RUN SECRET_KEY_BASE=$(cat .secret) mix do compile, phx.digest
 
-RUN mix release
+RUN SECRET_KEY_BASE=$(cat .secret) mix release
+RUN export SECRET_KEY_BASE=$(cat .secret)
 
-CMD ["./_build/prod/rel/bingo_hall/bin/bingo_hall", "start"]
+# CMD ["./_build/prod/rel/bingo_hall/bin/bingo_hall", "start"]
+RUN chmod +x ./entry.sh
+ENTRYPOINT ["./entry.sh"]

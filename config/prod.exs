@@ -22,8 +22,7 @@ config :bingo_hall, BingoHallWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :bingo_hall, BingoHallWeb.Endpoint,
-  ws_url: "wss://baseballbingo.app/socket/websocket"
+config :bingo_hall, BingoHallWeb.Endpoint, ws_url: "wss://baseballbingo.app/socket/websocket"
 
 # ## SSL Support
 #
