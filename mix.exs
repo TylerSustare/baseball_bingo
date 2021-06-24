@@ -9,6 +9,7 @@ defmodule BingoHall.Mixfile do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
       deps: deps()
     ]
   end
@@ -44,6 +45,22 @@ defmodule BingoHall.Mixfile do
       # {:bingo, git: "https://github.com/username/bingo.git"}
       # {:bingo, git: "git@github.com:username/bingo.git"}
       # {:bingo, in_umbrella: true}
+    ]
+  end
+
+  # Aliases are shortcuts or tasks specific to the current project.
+  # For example, to install project dependencies and perform other setup tasks, run:
+  #
+  #     $ mix setup
+  #
+  # See the documentation for `Mix` for more info on aliases.
+  defp aliases do
+    [
+      setup: ["deps.get", "cmd npm install --prefix assets"],
+      build: [
+        "cmd DOCKER_BUILDKIT=1 docker build --secret id=_secret,src=.secret --secret id=_db_url,src=.db_url -t bb ."
+      ],
+      run: ["cmd docker run -p 4000:4000 bb"]
     ]
   end
 end

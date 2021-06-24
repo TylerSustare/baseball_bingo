@@ -12,7 +12,15 @@
     </div>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <%= button("New Game", to: game_path(@conn, :new), 
+                  method: :get, 
+                  class: "btn btn-primary center-block") %> 
+    </div>
+  </div>
+</div>
 <div id="game-container" 
      data-game-name="<%= @game_name %>"
      data-auth-token="<%= @auth_token %>"
@@ -21,30 +29,7 @@
     <div id="content">
       <p id="error" class="alert alert-danger">{{ error }}</p>
       <div class="row">
-        <div class="col-xs-8">
-          <div id="game">
-            <div id="squares">
-              <div class="row" v-for="rowOfSquares in squares">
-                <div class="square" 
-                     v-for="square in rowOfSquares"
-                     v-bind:key="square.phrase"
-                     v-bind:style="squareStyle(square)"
-                     v-on:click="sendMark(square)">
-                  <span class="phrase">{{ square.phrase }}</span>
-                  <span class="points">{{ square.points }}</span>
-                  <span class="name" v-if="square.marked_by">
-                    {{ square.marked_by.name }}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <transition name="game-over-appear">
-              <div id="game-over" v-if="winner">
-                {{ winner.name }} won!
-              </div>
-            </transition>
-          </div>
-        </div>
+
         <div class="col-xs-4">
           <div class="panel panel-default">
             <div class="panel-heading">Who's Playing</div>
@@ -63,6 +48,8 @@
               </ul>
             </div>
           </div>
+          </div>
+          <div class="col-xs-7">
           <div class="panel panel-default">
             <div class="panel-heading">What's Up?</div>
             <div class="panel-body">
@@ -93,16 +80,33 @@
             </div>
           </form>
         </div>
+          </div>
+        <hr/>
+                  <div class="col-xs-12">
+          <div id="game">
+            <div id="squares">
+              <div class="row" v-for="rowOfSquares in squares">
+                <div class="square" 
+                     v-for="square in rowOfSquares"
+                     v-bind:key="square.phrase"
+                     v-bind:style="squareStyle(square)"
+                     v-on:click="sendMark(square)">
+                  <span class="phrase">{{ square.phrase }}</span>
+                  <span class="points">{{ square.points }}</span>
+                  <span class="name" v-if="square.marked_by">
+                    {{ square.marked_by.name }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <transition name="game-over-appear">
+              <div id="game-over" v-if="winner">
+                {{ winner.name }} won!
+              </div>
+            </transition>
+          </div>
+        </div>
       </div>
     </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-8">
-    <div class="form-group">
-      <%= button("New Game", to: game_path(@conn, :new), 
-                  method: :get, 
-                  class: "btn btn-primary center-block") %> 
-    </div>
-  </div>
-</div>

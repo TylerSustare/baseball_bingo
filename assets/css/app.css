@@ -6,7 +6,7 @@
 :root {
   --light-gray: #ebebeb;
   --orange: #ee961b;
-  --purple: #8064A2;
+  --purple: #8064a2;
 }
 
 html {
@@ -19,7 +19,8 @@ body {
 }
 
 .container {
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   margin-top: 25px;
 }
 
@@ -54,7 +55,7 @@ nav ul.nav a {
   color: rgb(41, 41, 41);
   background: #fff;
   margin-right: -7px;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
 }
 
 .letters .letter:hover {
@@ -118,8 +119,9 @@ input#player_name {
   font-weight: 600;
 }
 
-.radio-inline, .radio {
-  line-height: 1.0;
+.radio-inline,
+.radio {
+  line-height: 1;
 }
 
 .grid-glyph {
@@ -137,7 +139,7 @@ input#player_name {
 }
 
 .grid-glyph .box {
-  background: #4F819C;
+  background: #4f819c;
   margin: 3px;
   flex: 1 0 auto;
 }
@@ -182,7 +184,7 @@ input#game-url {
 }
 
 #squares .square {
-  color: #3A4145;
+  color: #3a4145;
   background: #fff;
   border-radius: 12px;
   margin: 4px;
@@ -203,7 +205,7 @@ input#game-url {
 }
 
 #squares .square:hover {
-  background: #F3F4D4;
+  background: #f3f4d4;
   cursor: pointer;
 }
 
@@ -269,24 +271,24 @@ ul#players .player-color {
   border-radius: 25%;
 }
 
-ul#players .player-score  {
+ul#players .player-score {
   font-size: 1em;
   font-weight: bold;
   margin-right: 5px;
-  vertical-align: middle; 
+  vertical-align: middle;
   float: right;
 }
 
 ul#messages {
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 160px;
+  max-height: 160px;
   overflow-y: scroll;
   font-size: 0.8em;
 }
 
 @media (min-width: 650px) {
   ul#messages {
-    min-height: 425px;
+    min-height: 300px;
     font-size: 1em;
   }
 }
@@ -318,20 +320,23 @@ ul#messages .chat-message-name {
 
    See: https://vuejs.org/v2/guide/transitions.html
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.game-over-appear-enter-active, .game-over-appear-leave-active {
-  transition: all .5s
+.game-over-appear-enter-active,
+.game-over-appear-leave-active {
+  transition: all 0.5s;
 }
-.game-over-appear-enter, .game-over-appear-leave-to {
+.game-over-appear-enter,
+.game-over-appear-leave-to {
   opacity: 0;
 }
 
-.player-appear-enter-active, .player-appear-leave-active {
-  transition: all 1s
+.player-appear-enter-active,
+.player-appear-leave-active {
+  transition: all 1s;
 }
-.player-appear-enter, .player-appear-leave-active {
+.player-appear-enter,
+.player-appear-leave-active {
   opacity: 0;
 }
-
 
 /* Alert
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -449,7 +454,7 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #f0ad4e;
 }
 
-.btn.btn-primary:disabled{
-  background-color: #8B8C8F;
-  border-color: #8B8C8F;
+.btn.btn-primary:disabled {
+  background-color: #8b8c8f;
+  border-color: #8b8c8f;
 }
