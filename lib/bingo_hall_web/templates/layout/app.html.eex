@@ -36,6 +36,12 @@
               <span class="letter">A</span>
               <span class="letter">L</span>
               <span class="letter">L</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <div class="letters">
               <span class="letter inverse">B</span>
               <span class="letter">I</span>
               <span class="letter">N</span>
@@ -44,6 +50,7 @@
             </div>
           </div>
         </div>
+ 
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
